@@ -4,8 +4,11 @@ import classes from "./search.module.css";
 export function LinearSearch() {
   const [arr, setArr] = useState([
     { number: 1, color: "#C3CCD9" },
+    { number: 2, color: "#C3CCD9" },
     { number: 3, color: "#C3CCD9" },
+    { number: 4, color: "#C3CCD9" },
     { number: 5, color: "#C3CCD9" },
+    { number: 6, color: "#C3CCD9" },
     { number: 7, color: "#C3CCD9" },
     { number: 8, color: "#C3CCD9" },
     { number: 9, color: "#C3CCD9" },
@@ -64,6 +67,8 @@ export function LinearSearch() {
         <label>
           <input
             type="number"
+            min="1"
+            max="9"
             value={searchValue}
             onChange={handleChange}
             className={classes.input}
