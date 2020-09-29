@@ -42,3 +42,24 @@
   padding: 3px;
   font-size: 18px;
 }
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.formInput {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.radioGroup > label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
