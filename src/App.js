@@ -6,6 +6,7 @@ import classes from "./navbar.module.css";
 import { Hashing } from "./Hashing";
 import { LinearSearch } from "./LinearSearch";
 import { Quiz } from "./Quiz";
+import { BattleShips } from "./BattleShips";
 function App() {
   return (
     <Router>
@@ -24,6 +25,10 @@ function App() {
             Hashing
           </Link>
 
+          <Link to="/BattleShip" className={classes.link}>
+            BattleShip
+          </Link>
+
           <Link to="/Quiz" className={classes.link}>
             Quiz
           </Link>
@@ -37,6 +42,9 @@ function App() {
           </Route>
           <Route path="/hashing">
             <Hashing />
+          </Route>
+          <Route path="/hashing">
+            <BattleShips />
           </Route>
           <Route path="/quiz">
             <Quiz />
