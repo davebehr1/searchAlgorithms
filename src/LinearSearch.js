@@ -28,7 +28,7 @@ export function LinearSearch() {
 
       setArr(tempArr);
 
-      if (arr[i] == searchValue) return i;
+      if (arr[i] === parseInt(searchValue)) return i;
       await delay(800);
     }
     return false;
