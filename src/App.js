@@ -5,6 +5,7 @@ import { BinarySearch } from "./BinarySearch";
 import classes from "./navbar.module.css";
 import { Hashing } from "./Hashing";
 import { LinearSearch } from "./LinearSearch";
+import { Quiz } from "./Quiz";
 function App() {
   return (
     <Router>
@@ -22,6 +23,10 @@ function App() {
           <Link to="/hashing" className={classes.link}>
             Hashing
           </Link>
+
+          <Link to="/Quiz" className={classes.link}>
+            Quiz
+          </Link>
         </div>
         <Switch>
           <Route path="/binary-search">
@@ -32,6 +37,9 @@ function App() {
           </Route>
           <Route path="/hashing">
             <Hashing />
+          </Route>
+          <Route path="/quiz">
+            <Quiz />
           </Route>
         </Switch>
       </div>
