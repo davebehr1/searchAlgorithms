@@ -1,0 +1,17 @@
+.navbar {
+  background: #5a8ad1;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.link {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+.title {
+  color: white;
+  margin-right: 20px;
+  font-size: 30px;
+}

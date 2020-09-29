@@ -1,0 +1,44 @@
+.array {
+  display: flex;
+}
+
+.arrayItem {
+  display: flex;
+  padding: 20px;
+  background: #c3ccd9;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  background: #44689e;
+  color: white;
+  margin-top: 15px;
+}
+.form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.description {
+  width: 50%;
+  color: #636363;
+}
+.heading {
+  color: #636363;
+}
+.input {
+  width: 50px;
+  padding: 3px;
+  font-size: 18px;
+}
