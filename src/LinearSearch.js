@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./search.module.css";
+import ReactPlayer from "react-player";
 
 export function LinearSearch() {
   const [arr, setArr] = useState([
@@ -50,6 +51,10 @@ export function LinearSearch() {
         such as the binary search algorithm and hash tables allow significantly
         faster searching comparison to Linear search.
       </p>
+      <ReactPlayer
+        url="https://youtu.be/4GPdGsB3OSc"
+        style={{ margin: "30px" }}
+      />
       <div className={classes.array}>
         {arr.map((item, index) => {
           return (

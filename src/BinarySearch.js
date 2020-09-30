@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./search.module.css";
+import ReactPlayer from "react-player";
 
 export function BinarySearch() {
   const [arr, setArr] = useState([
@@ -67,6 +68,10 @@ export function BinarySearch() {
         to linear, binary search is much faster with Time Complexity of O(logN)
         whereas linear search algorithm works in O(N) time complexity.{" "}
       </p>
+      <ReactPlayer
+        url="https://youtu.be/P3YID7liBug"
+        style={{ margin: "30px" }}
+      />
       <div className={classes.array}>
         {arr.map((item, index) => {
           return (
