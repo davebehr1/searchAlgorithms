@@ -61,7 +61,7 @@
 }
 .radioGroup {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
 }
 .radioGroup > label {
@@ -70,5 +70,14 @@
 }
 
 .questionLabel {
+  font-family: "Orbitron";
+  font-weight: bold;
+  font-size: 20px;
   margin-bottom: 8px;
+}
+.buttonWapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -13,8 +13,7 @@ const schema = yup.object().shape({
 export function LinearQuiz() {
   return (
     <div className={classes.wrapper}>
-      <h1>Quiz</h1>
-      <p> test your knowledge</p>
+      <h1>test your knowledge</h1>
       <Formik
         initialValues={{
           question1: "",
@@ -29,12 +28,6 @@ export function LinearQuiz() {
       >
         {({ handleSubmit }) => (
           <Form className={classes.quiz} onSubmit={handleSubmit}>
-            <div className={classes.formInput}>
-              <label htmlFor="question1" className={classes.questionLabel}>
-                Which sort searches in linear time?
-              </label>
-              <Field id="question1" name="question1" />
-            </div>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
                 Linear search is also known as?
@@ -147,15 +140,16 @@ export function LinearQuiz() {
                 </label>
               </div>
             </div>
-
-            <ClipButton
-              className={classes.button}
-              type={"submit"}
-              label={"submit"}
-              clipPath={clipPaths[1]}
-              padding="20px"
-              fontSize="20px"
-            />
+            <div className={classes.buttonWapper}>
+              <ClipButton
+                className={classes.button}
+                type={"submit"}
+                label={"submit"}
+                clipPath={clipPaths[1]}
+                padding="20px"
+                fontSize="20px"
+              />
+            </div>
           </Form>
         )}
       </Formik>

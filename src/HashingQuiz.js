@@ -30,14 +30,8 @@ export function HashingQuiz() {
         {({ handleSubmit }) => (
           <Form className={classes.quiz} onSubmit={handleSubmit}>
             <div className={classes.formInput}>
-              <label htmlFor="question1" className={classes.questionLabel}>
-                Which sort searches in linear time?
-              </label>
-              <Field id="question1" name="question1" />
-            </div>
-            <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Linear search is also known as?
+                What is the name of the data structure used in hashing
               </label>
               <div
                 role="group"
@@ -45,24 +39,16 @@ export function HashingQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Sequential search"
-                  />
-                  Sequential search
+                  <Field type="radio" name="question2" value="Hash function" />
+                  Hash function
                 </label>
                 <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Logarithmic search"
-                  />
-                  Logarithmic search
+                  <Field type="radio" name="question2" value="Hash table" />
+                  Hash table
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Hashing" />
-                  Hashing
+                  <Field type="radio" name="question2" value="Hash database" />
+                  Hash database
                 </label>
               </div>
             </div>
