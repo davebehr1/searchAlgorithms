@@ -6,8 +6,6 @@ import { Routes } from "./Routes";
 function App() {
   useEffect(() => {
     localStorage.setItem("done", JSON.stringify(["binary-search"]));
-
-    console.log(JSON.parse(localStorage.getItem("done")));
   }, []);
   return (
     <Router>

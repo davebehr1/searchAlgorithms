@@ -2,6 +2,8 @@ import React from "react";
 import classes from "./search.module.css";
 import * as yup from "yup";
 import { Formik, Field, Form } from "formik";
+import { ClipButton } from "./Components/ClipButton";
+import { clipPaths } from "./Home";
 
 const schema = yup.object().shape({
   question1: yup.string().required("please answer this question"),
@@ -35,8 +37,7 @@ export function Quiz() {
             </div>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                How many iterations will it take to find 8 in
-                [1,2,3,4,5,6,7,8,9]
+                Linear search is also known as?
               </label>
               <div
                 role="group"
@@ -44,20 +45,40 @@ export function Quiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question2" value="One" />1
+                  <Field
+                    type="radio"
+                    name="question2"
+                    value="Sequential search"
+                  />
+                  Sequential search
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Two" />2
+                  <Field
+                    type="radio"
+                    name="question2"
+                    value="Logarithmic search"
+                  />
+                  Logarithmic search
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Three" />3
+                  <Field type="radio" name="question2" value="Hashing" />
+                  Hashing
                 </label>
               </div>
             </div>
 
-            <button type="submit" className={classes.button}>
+            {/* <button type="submit" className={classes.button}>
               Submit
-            </button>
+            </button> */}
+
+            <ClipButton
+              className={classes.button}
+              type={"submit"}
+              label={"submit"}
+              clipPath={clipPaths[1]}
+              padding="20px"
+              fontSize="20px"
+            />
           </Form>
         )}
       </Formik>

@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
 import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
+import { Quiz } from "./Quiz";
 
 export function LinearSearch() {
   useEffect(() => {
@@ -155,7 +156,7 @@ export function LinearSearch() {
             </h3>
           </>
         }
-        quiz={<h1>Quiz</h1>}
+        quiz={<Quiz />}
       />
       <ReactPlayer
         url="https://www.youtube.com/watch?v=aqFTmGbKajI"
