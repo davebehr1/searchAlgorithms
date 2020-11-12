@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
 import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
+import { BinaryQuiz } from "./BinaryQuiz";
 
 export function BinarySearch() {
   const [arr, setArr] = useState([
@@ -148,11 +149,7 @@ export function BinarySearch() {
             </h3>
           </>
         }
-        quiz={
-          <div>
-            <h1>Quiz</h1>
-          </div>
-        }
+        quiz={<BinaryQuiz />}
       />
       <ReactPlayer
         url="https://www.youtube.com/watch?v=T2sFYY-fT5o"

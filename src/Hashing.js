@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
 import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
+import { HashingQuiz } from "./HashingQuiz";
 
 export function Hashing() {
   useEffect(() => {
@@ -158,11 +159,7 @@ export function Hashing() {
             </h3>
           </>
         }
-        quiz={
-          <div>
-            <h1>Quiz</h1>
-          </div>
-        }
+        quiz={<HashingQuiz />}
       />
       <ReactPlayer
         url="https://www.youtube.com/watch?v=KyUTuwz_b7Q"
