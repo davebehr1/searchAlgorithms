@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classes from "./search.module.css";
 import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
@@ -7,15 +7,15 @@ import { SimpleTabs } from "./Components/Tabs";
 import { LinearQuiz } from "./LinearQuiz";
 
 export function LinearSearch() {
-  useEffect(() => {
-    let values = [];
-    values = JSON.parse(localStorage.getItem("done"));
-    if (values.includes("linear-search") === false) {
-      values.push("linear-search");
-    }
+  // useEffect(() => {
+  //   let values = [];
+  //   values = JSON.parse(localStorage.getItem("done"));
+  //   if (values.includes("linear-search") === false) {
+  //     values.push("linear-search");
+  //   }
 
-    localStorage.setItem("done", JSON.stringify(values));
-  }, []);
+  //   localStorage.setItem("done", JSON.stringify(values));
+  // }, []);
   const [arr, setArr] = useState([
     { number: 1, color: "transparent" },
     { number: 2, color: "transparent" },

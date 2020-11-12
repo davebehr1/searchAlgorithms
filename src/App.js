@@ -2,15 +2,22 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import { Routes } from "./Routes";
+import { ProgessController } from "./Context";
 
 function App() {
   useEffect(() => {
-    localStorage.setItem("done", JSON.stringify(["binary-search"]));
+    localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
+    localStorage.setItem(
+      "badges",
+      JSON.stringify({ binary: false, linear: false, hashing: false })
+    );
   }, []);
   return (
-    <Router>
-      <Routes />
-    </Router>
+    <ProgessController>
+      <Router>
+        <Routes />
+      </Router>
+    </ProgessController>
   );
 }
 export default App;

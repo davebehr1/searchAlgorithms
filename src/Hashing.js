@@ -9,12 +9,12 @@ import { HashingQuiz } from "./HashingQuiz";
 export function Hashing() {
   useEffect(() => {
     let values = [];
-    values = JSON.parse(localStorage.getItem("done"));
+    values = JSON.parse(localStorage.getItem("unlocked"));
     if (values.includes("hashing") === false) {
       values.push("hashing");
     }
 
-    localStorage.setItem("done", JSON.stringify(values));
+    localStorage.setItem("unlocked", JSON.stringify(values));
   }, []);
   const [arr, setArr] = useState([
     { number: 1, color: "transparent" },

@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./navbar.module.css";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
+import { ProgressContext } from "./Context";
 export function NavBar() {
   const { pathname } = useLocation();
+
+  const { unlocked, setUnlocked } = useContext(ProgressContext);
+
+  // setUnlocked(["hashing"]);
+
+  console.log("unlocked:", unlocked);
+
+  useEffect(() => {}, [JSON.parse(localStorage.getItem("badges"))]);
 
   return (
     <div className={classes.navbarWrapper}>
@@ -32,16 +41,21 @@ export function NavBar() {
           to="/linear-search"
           className={clsx(
             classes.link,
-            pathname === "/linear-search" && classes.active
+            pathname === "/linear-search" && classes.active,
+            !localStorage.getItem("unlocked").includes("linear-search") &&
+              classes.disabled
           )}
         >
           Linear Search
         </Link>
         <Link
           to="/hashing"
+          disable={!localStorage.getItem("unlocked").includes("hashing")}
           className={clsx(
             classes.link,
-            pathname === "/hashing" && classes.active
+            pathname === "/hashing" && classes.active,
+            !localStorage.getItem("unlocked").includes("hashing") &&
+              classes.disabled
           )}
         >
           Hashing

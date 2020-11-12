@@ -3,7 +3,6 @@ import { Box } from "@material-ui/core";
 import classes from "./Home.module.css";
 import { ClipButton } from "./Components/ClipButtonLink";
 import Particles from "react-particles-js";
-import { Badge } from "./Components/Badge";
 import BadgeSvg from "./Components/badgeSvg";
 
 export const clipPaths = [
@@ -14,9 +13,10 @@ export const clipPaths = [
 export function Home() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem("done") === null) {
-      localStorage.setItem("done", JSON.stringify(["binary-search"]));
+    if (localStorage.getItem("unlocked") === null) {
+      localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
     }
+
     setMounted(true);
   }, []);
   if (mounted) {
@@ -50,9 +50,18 @@ export function Home() {
         <div className={classes.Wrapper}>
           <h1 className={classes.Heading}>Welcome detective</h1>
           <Box>
-            <BadgeSvg fillbadge={true} label={"B.S"} />
-            <BadgeSvg fillbadge={false} label={"L.S"} />
-            <BadgeSvg fillbadge={false} label={"H.S"} />
+            <BadgeSvg
+              fillbadge={JSON.parse(localStorage.getItem("badges")).binary}
+              label={"B.S"}
+            />
+            <BadgeSvg
+              fillbadge={JSON.parse(localStorage.getItem("badges")).linear}
+              label={"L.S"}
+            />
+            <BadgeSvg
+              fillbadge={JSON.parse(localStorage.getItem("badges")).hashing}
+              label={"H.S"}
+            />
           </Box>
           <h4 className={classes.subHeading}>
             What will you investigate next ?
@@ -62,19 +71,23 @@ export function Home() {
             clipPath={clipPaths[0]}
             link={"/binary-search"}
             label={"binary search"}
-            disable={!localStorage.getItem("done").includes("binary-search")}
+            disable={
+              !localStorage.getItem("unlocked").includes("binary-search")
+            }
           />
           <ClipButton
             clipPath={clipPaths[1]}
             link={"/linear-search"}
             label={"Linear Search"}
-            disable={!localStorage.getItem("done").includes("linear-search")}
+            disable={
+              !localStorage.getItem("unlocked").includes("linear-search")
+            }
           />
           <ClipButton
             clipPath={clipPaths[2]}
             link={"/hashing"}
             label={"Hashing"}
-            disable={!localStorage.getItem("done").includes("hashing")}
+            disable={!localStorage.getItem("unlocked").includes("hashing")}
           />
         </div>
       </>

@@ -1,13 +1,16 @@
 import React from "react";
 import classes from "./search.module.css";
+import { Box } from "@material-ui/core";
 import * as yup from "yup";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ClipButton } from "./Components/ClipButton";
 import { clipPaths } from "./Home";
 
 const schema = yup.object().shape({
   question1: yup.string().required("please answer this question"),
   question2: yup.string().required("please answer this question"),
+  question3: yup.string().required("please answer this question"),
+  question4: yup.string().required("please answer this question"),
 });
 
 export function HashingQuiz() {
@@ -18,14 +21,31 @@ export function HashingQuiz() {
         initialValues={{
           question1: "",
           question2: "",
+          question3: "",
+          question4: "",
         }}
         validationSchema={schema}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={async (values, { setStatus }) => {
+          try {
+            await new Promise((r) => setTimeout(r, 500));
+            setStatus({
+              msg: `3 out of 4 are correct`,
+              type: "success",
+            });
+
+            let badges;
+            badges = JSON.parse(localStorage.getItem("badges"));
+            badges.hashing = true;
+            localStorage.setItem("badges", JSON.stringify(badges));
+          } catch (error) {
+            setStatus({
+              msg: error,
+              type: "error",
+            });
+          }
         }}
       >
-        {({ handleSubmit }) => (
+        {({ handleSubmit, status }) => (
           <Form className={classes.quiz} onSubmit={handleSubmit}>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
@@ -37,19 +57,24 @@ export function HashingQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question2" value="Hash function" />
+                  <Field type="radio" name="question1" value="Hash function" />
                   Hash function
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Hash table" />
+                  <Field type="radio" name="question1" value="Hash table" />
                   Hash table
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Hash database" />
+                  <Field type="radio" name="question1" value="Hash database" />
                   Hash database
                 </label>
               </div>
             </div>
+            <ErrorMessage
+              name="question1"
+              component="div"
+              className={classes.fieldError}
+            />
 
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
@@ -86,6 +111,11 @@ export function HashingQuiz() {
                 </label>
               </div>
             </div>
+            <ErrorMessage
+              name="question2"
+              component="div"
+              className={classes.fieldError}
+            />
 
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
@@ -97,19 +127,24 @@ export function HashingQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question2" value=" Linear search" />
+                  <Field type="radio" name="question3" value=" Linear search" />
                   Linear search
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Binary Search" />
+                  <Field type="radio" name="question3" value="Binary Search" />
                   Binary Search
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="Hashing" />
+                  <Field type="radio" name="question3" value="Hashing" />
                   Hashing
                 </label>
               </div>
             </div>
+            <ErrorMessage
+              name="question3"
+              component="div"
+              className={classes.fieldError}
+            />
 
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
@@ -122,15 +157,21 @@ export function HashingQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question2" value="True" />
+                  <Field type="radio" name="question4" value="True" />
                   True
                 </label>
                 <label>
-                  <Field type="radio" name="question2" value="False" />
+                  <Field type="radio" name="question4" value="False" />
                   False
                 </label>
               </div>
             </div>
+            <ErrorMessage
+              name="question4"
+              component="div"
+              className={classes.fieldError}
+            />
+            {status && <Box className={classes.status}>{status.msg}</Box>}
 
             <div className={classes.buttonWapper}>
               <ClipButton

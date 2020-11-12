@@ -18,6 +18,19 @@
   align-items: center;
   background: linear-gradient(120.93deg, #03294a 4.58%, #091321 91.02%);
 }
+.fieldError {
+  color: #ff0b0b;
+}
+.status {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: gold;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: "Orbitron";
+}
 .button {
   border: none;
   border-radius: 5px;
