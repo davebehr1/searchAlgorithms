@@ -12,17 +12,19 @@
   font-size: 50px;
   font-weight: 800;
   text-transform: uppercase;
-  background: -webkit-linear-gradient(#ff0b0b, #33333314);
-  -webkit-background-clip: text;
+  /* background: -webkit-linear-gradient(#ff0b0b, #33333314); */
+  color: #ff0b0b;
+  opacity: 0.5;
+  /* -webkit-background-clip: text; */
   opacity: 0.7;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-text-fill-color: transparent; */
 }
 .subHeading {
   font-size: 22px;
   color: orange;
   font-weight: 800;
   text-transform: uppercase;
-  filter: drop-shadow(-1px -1px 2px rgba(255, 165, 0, 1));
+  /* filter: drop-shadow(-1px -1px 2px rgba(255, 165, 0, 1)); */
   margin-top: 0px;
 }
 .button {

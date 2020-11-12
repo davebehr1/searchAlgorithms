@@ -1,11 +1,12 @@
 .array {
   display: flex;
+  border: 3px solid orange;
 }
 
 .arrayItem {
   display: flex;
   padding: 20px;
-  background: #c3ccd9;
+  background: transparent;
   color: orange;
   justify-content: center;
   align-items: center;
@@ -42,6 +43,9 @@
   width: 50px;
   padding: 3px;
   font-size: 18px;
+  border: 1px solid orange;
+  background: transparent;
+  color: orange;
 }
 .quiz {
   display: flex;

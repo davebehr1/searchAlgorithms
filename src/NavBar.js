@@ -1,31 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./navbar.module.css";
+import { useLocation } from "react-router-dom";
+import clsx from "clsx";
 export function NavBar() {
+  const { pathname } = useLocation();
+
+  console.log(pathname);
   return (
     <div className={classes.navbarWrapper}>
       <div className={classes.navbar}>
-        <Link to="/" className={classes.link}>
+        <Link
+          to="/"
+          className={clsx(
+            classes.link,
+            classes.heading,
+            pathname === "/" && classes.active
+          )}
+        >
           <h1 className={classes.title}>Searching Algorithms</h1>
         </Link>
-        <Link to="/binary-search" className={classes.link}>
+        <Link
+          to="/binary-search"
+          className={clsx(
+            classes.link,
+            pathname === "/binary-search" && classes.active
+          )}
+        >
           Binary Search
         </Link>
-
-        <Link to="/linear-search" className={classes.link}>
+        <Link
+          to="/linear-search"
+          className={clsx(
+            classes.link,
+            pathname === "/linear-search" && classes.active
+          )}
+        >
           Linear Search
         </Link>
-
-        <Link to="/hashing" className={classes.link}>
+        <Link
+          to="/hashing"
+          className={clsx(
+            classes.link,
+            pathname === "/hashing" && classes.active
+          )}
+        >
           Hashing
-        </Link>
-
-        <Link to="/BattleShip" className={classes.link}>
-          BattleShip
-        </Link>
-
-        <Link to="/Quiz" className={classes.link}>
-          Quiz
         </Link>
       </div>
     </div>
