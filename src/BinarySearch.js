@@ -32,7 +32,7 @@ export function BinarySearch() {
       // Find the mid index
       let mid = Math.floor((start + end) / 2);
       let tempArr = [...arr];
-      console.log(mid);
+
       tempArr.forEach((item, index) => {
         item.color = "transparent";
       });
@@ -56,7 +56,6 @@ export function BinarySearch() {
   };
 
   function handleSubmit(event) {
-    console.log("submit");
     search();
     event.preventDefault();
   }

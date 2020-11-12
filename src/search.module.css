@@ -75,9 +75,16 @@
   font-size: 20px;
   margin-bottom: 8px;
 }
+.heading {
+  font-family: "Orbitron";
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
 .buttonWapper {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
 }

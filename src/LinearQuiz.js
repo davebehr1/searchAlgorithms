@@ -13,7 +13,7 @@ const schema = yup.object().shape({
 export function LinearQuiz() {
   return (
     <div className={classes.wrapper}>
-      <h1>test your knowledge</h1>
+      <h1 className={classes.heading}>test your knowledge</h1>
       <Formik
         initialValues={{
           question1: "",
@@ -21,7 +21,6 @@ export function LinearQuiz() {
         }}
         validationSchema={schema}
         onSubmit={async (values) => {
-          console.log("submitting");
           await new Promise((r) => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
         }}

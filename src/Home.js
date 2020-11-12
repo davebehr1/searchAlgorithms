@@ -50,11 +50,13 @@ export function Home() {
         <div className={classes.Wrapper}>
           <h1 className={classes.Heading}>Welcome detective</h1>
           <Box>
-            <BadgeSvg fill={true} label={"B.S"} />
-            <BadgeSvg fill={false} label={"L.S"} />
-            <BadgeSvg fill={false} label={"H.S"} />
+            <BadgeSvg fillbadge={true} label={"B.S"} />
+            <BadgeSvg fillbadge={false} label={"L.S"} />
+            <BadgeSvg fillbadge={false} label={"H.S"} />
           </Box>
-          <h4 className={classes.subHeading}>What will you investigate next</h4>
+          <h4 className={classes.subHeading}>
+            What will you investigate next ?
+          </h4>
 
           <ClipButton
             clipPath={clipPaths[0]}

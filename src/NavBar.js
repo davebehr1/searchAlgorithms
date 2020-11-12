@@ -6,7 +6,6 @@ import clsx from "clsx";
 export function NavBar() {
   const { pathname } = useLocation();
 
-  console.log(pathname);
   return (
     <div className={classes.navbarWrapper}>
       <div className={classes.navbar}>

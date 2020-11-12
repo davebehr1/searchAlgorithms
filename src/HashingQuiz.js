@@ -13,8 +13,7 @@ const schema = yup.object().shape({
 export function HashingQuiz() {
   return (
     <div className={classes.wrapper}>
-      <h1>Quiz</h1>
-      <p> test your knowledge</p>
+      <h1 className={classes.heading}>test your knowledge</h1>
       <Formik
         initialValues={{
           question1: "",
@@ -22,7 +21,6 @@ export function HashingQuiz() {
         }}
         validationSchema={schema}
         onSubmit={async (values) => {
-          console.log("submitting");
           await new Promise((r) => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
         }}
@@ -134,14 +132,16 @@ export function HashingQuiz() {
               </div>
             </div>
 
-            <ClipButton
-              className={classes.button}
-              type={"submit"}
-              label={"submit"}
-              clipPath={clipPaths[1]}
-              padding="20px"
-              fontSize="20px"
-            />
+            <div className={classes.buttonWapper}>
+              <ClipButton
+                className={classes.button}
+                type={"submit"}
+                label={"submit"}
+                clipPath={clipPaths[1]}
+                padding="20px"
+                fontSize="20px"
+              />
+            </div>
           </Form>
         )}
       </Formik>

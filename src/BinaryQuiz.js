@@ -13,8 +13,7 @@ const schema = yup.object().shape({
 export function BinaryQuiz() {
   return (
     <div className={classes.wrapper}>
-      <h1>Quiz</h1>
-      <p> test your knowledge</p>
+      <h1 className={classes.heading}>test your knowledge</h1>
       <Formik
         initialValues={{
           question1: "",
@@ -22,19 +21,12 @@ export function BinaryQuiz() {
         }}
         validationSchema={schema}
         onSubmit={async (values) => {
-          console.log("submitting");
           await new Promise((r) => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
         }}
       >
         {({ handleSubmit }) => (
           <Form className={classes.quiz} onSubmit={handleSubmit}>
-            <div className={classes.formInput}>
-              <label htmlFor="question1" className={classes.questionLabel}>
-                Which sort searches in linear time?
-              </label>
-              <Field id="question1" name="question1" />
-            </div>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
                 Linear search is also known as?
@@ -148,14 +140,16 @@ export function BinaryQuiz() {
               </div>
             </div>
 
-            <ClipButton
-              className={classes.button}
-              type={"submit"}
-              label={"submit"}
-              clipPath={clipPaths[1]}
-              padding="20px"
-              fontSize="20px"
-            />
+            <div className={classes.buttonWapper}>
+              <ClipButton
+                className={classes.button}
+                type={"submit"}
+                label={"submit"}
+                clipPath={clipPaths[1]}
+                padding="20px"
+                fontSize="20px"
+              />
+            </div>
           </Form>
         )}
       </Formik>

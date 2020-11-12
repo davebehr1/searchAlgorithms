@@ -65,7 +65,6 @@ export function Hashing() {
   };
 
   function handleSubmit(event) {
-    console.log("submit");
     search();
     event.preventDefault();
   }
