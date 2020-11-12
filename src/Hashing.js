@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./search.module.css";
 import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
@@ -6,6 +6,15 @@ import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
 
 export function Hashing() {
+  useEffect(() => {
+    let values = [];
+    values = JSON.parse(localStorage.getItem("done"));
+    if (values.includes("hashing") === false) {
+      values.push("hashing");
+    }
+
+    localStorage.setItem("done", JSON.stringify(values));
+  }, []);
   const [arr, setArr] = useState([
     { number: 1, color: "transparent" },
     { number: 2, color: "transparent" },

@@ -15,6 +15,9 @@ const useStyles = makeStyles(() => ({
     background: "linear-gradient(120.93deg, #03294a 4.58%, #091321 91.02%)",
     padding: "50px",
   },
+  disabled: {
+    opacity: 0.5,
+  },
   Link: {
     textDecoration: "none",
     fontSize: "24px",

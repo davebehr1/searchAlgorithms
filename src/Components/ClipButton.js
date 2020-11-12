@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Typography } from "@material-ui/core";
 import useStyles from "./ButtonStyles";
-import { Link } from "react-router-dom";
 
 export const ClipButton = ({
   clipPath,

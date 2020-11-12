@@ -11,6 +11,7 @@
 }
 .heading {
   margin-left: 30px;
+  font-family: "Orbitron";
 }
 .navbarWrapper {
   margin-top: 20px;
@@ -33,6 +34,7 @@
   text-decoration: none;
   color: orange;
   padding: 10px;
+  font-family: "Orbitron";
 }
 .active {
   color: #081522;
