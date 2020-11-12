@@ -4,6 +4,7 @@ import classes from "./Home.module.css";
 import { ClipButton } from "./Components/ClipButtonLink";
 import Particles from "react-particles-js";
 import { Badge } from "./Components/Badge";
+import BadgeSvg from "./Components/badgeSvg";
 
 export const clipPaths = [
   "polygon(0% 0%, 7% 100%, 87% 88%, 94% 4%)",
@@ -49,9 +50,9 @@ export function Home() {
         <div className={classes.Wrapper}>
           <h1 className={classes.Heading}>Welcome detective</h1>
           <Box>
-            <Badge />
-            <Badge />
-            <Badge />
+            <BadgeSvg fill={"transparent"} />
+            <BadgeSvg fill={"transparent"} />
+            <BadgeSvg fill={"orange"} />
           </Box>
           <h4 className={classes.subHeading}>What will you investigate next</h4>
 
