@@ -19,8 +19,19 @@ function badgeSvg(props) {
       />
       <path
         d="M65.53 32c43.5-13.78 86.72-12.6 129.94-.2 5.27 50.54-14.22 105.94-64.57 137.86C87.37 143.72 60.49 92.16 65.53 32z"
-        fill={props.fill}
+        fill={props.fill ? "orange" : "transparent"}
       />
+      <text
+        x="51.5%"
+        y="50%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        fill={props.fill ? "black" : "orange"}
+        font-size="43px"
+        font-family="Orbitron"
+      >
+        {props.label}
+      </text>
     </svg>
   );
 }
