@@ -5,6 +5,7 @@ import { clipPaths } from "./Home";
 import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
 import { BinaryQuiz } from "./BinaryQuiz";
+import { Typography } from "@material-ui/core";
 
 export function BinarySearch() {
   const [arr, setArr] = useState([
@@ -69,13 +70,13 @@ export function BinarySearch() {
       <SimpleTabs
         background={
           <div className={classes.background}>
-            <p>
+            <Typography variant="body1">
               Binary Search is searching technique which works on Divide and
               Conquer approach. It used to search any element in a sorted array.
               As compared to linear, binary search is much faster with Time
               Complexity of O(logN) whereas linear search algorithm works in
               O(N) time complexity
-            </p>
+            </Typography>
 
             <ReactPlayer
               url="https://www.youtube.com/watch?v=T2sFYY-fT5o"
