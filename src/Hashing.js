@@ -77,7 +77,38 @@ export function Hashing() {
       <h1 className={classes.heading}>Hashing</h1>
       <SimpleTabs
         background={
-          "Unlike Linear and binary search Hashing is the transformation of a string of characters into a usually shorter fixed-length value or key that represents the original string. This is done through a data Structure which is designed to use a special function called the Hash function. A Hash function is used to map a given value with a particular key for faster access of elements. The efficiency of mapping depends of the efficiency of the hash function used. In other words, a hash function is any function that can be used to map data of arbitrary size to fixed-size values. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The values are used to index a fixed-size table called a hash table. Use of a hash function to index a hash table is called hashing or scatter storage addressing. Hash functions and their associated hash tables are used in data storage and retrieval applications to access data in a small and nearly constant time per retrieval, and storage space only fractionally greater than the total space required for the data or records themselves. Hashing is a computationally and storage space efficient form of data access which avoids the non-linear access time of ordered and unordered lists and structured trees, and the often-exponential storage requirements of direct access of state spaces of large or variable-length keys. It is also used in many encryption algorithms"
+          <div className={classes.background}>
+            <p>
+              Unlike Linear and binary search Hashing is the transformation of a
+              string of characters into a usually shorter fixed-length value or
+              key that represents the original string. This is done through a
+              data Structure which is designed to use a special function called
+              the Hash function. A Hash function is used to map a given value
+              with a particular key for faster access of elements. The
+              efficiency of mapping depends of the efficiency of the hash
+              function used. In other words, a hash function is any function
+              that can be used to map data of arbitrary size to fixed-size
+              values. The values returned by a hash function are called hash
+              values, hash codes, digests, or simply hashes. The values are used
+              to index a fixed-size table called a hash table. Use of a hash
+              function to index a hash table is called hashing or scatter
+              storage addressing. Hash functions and their associated hash
+              tables are used in data storage and retrieval applications to
+              access data in a small and nearly constant time per retrieval, and
+              storage space only fractionally greater than the total space
+              required for the data or records themselves. Hashing is a
+              computationally and storage space efficient form of data access
+              which avoids the non-linear access time of ordered and unordered
+              lists and structured trees, and the often-exponential storage
+              requirements of direct access of state spaces of large or
+              variable-length keys. It is also used in many encryption
+              algorithms
+            </p>
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=KyUTuwz_b7Q"
+              style={{ margin: "30px" }}
+            />
+          </div>
         }
         prosAndCons={
           <>
@@ -159,10 +190,6 @@ export function Hashing() {
           </>
         }
         quiz={<HashingQuiz />}
-      />
-      <ReactPlayer
-        url="https://www.youtube.com/watch?v=KyUTuwz_b7Q"
-        style={{ margin: "30px" }}
       />
     </div>
   );

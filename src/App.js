@@ -6,18 +6,21 @@ import { ProgessController } from "./Context";
 
 function App() {
   useEffect(() => {
-    localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
-    localStorage.setItem(
-      "badges",
-      JSON.stringify({ binary: false, linear: false, hashing: false })
-    );
+    if (localStorage.getItem("unlocked") === null) {
+      console.log("setting");
+      localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
+      localStorage.setItem(
+        "badges",
+        JSON.stringify({ binary: false, linear: false, hashing: false })
+      );
+    }
   }, []);
   return (
-    <Router>
-      <ProgessController>
+    <ProgessController>
+      <Router>
         <Routes />
-      </ProgessController>
-    </Router>
+      </Router>
+    </ProgessController>
   );
 }
 export default App;

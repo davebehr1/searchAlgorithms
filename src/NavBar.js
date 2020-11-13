@@ -8,9 +8,7 @@ export function NavBar() {
   const { pathname } = useLocation();
   const { unlocked } = useContext(ProgressContext);
 
-  useEffect(() => {
-    console.log(unlocked);
-  }, [unlocked]);
+  useEffect(() => {}, [unlocked]);
 
   return (
     <div className={classes.navbarWrapper}>
@@ -47,7 +45,6 @@ export function NavBar() {
         </Link>
         <Link
           to="/hashing"
-          disable={!localStorage.getItem("unlocked").includes("hashing")}
           className={clsx(
             classes.link,
             pathname === "/hashing" && classes.active,

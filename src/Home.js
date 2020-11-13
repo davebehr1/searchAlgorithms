@@ -17,6 +17,13 @@ export function Home() {
       localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
     }
 
+    if (localStorage.getItem("badges") === null) {
+      localStorage.setItem(
+        "badges",
+        JSON.stringify({ binary: false, linear: false, hashing: false })
+      );
+    }
+
     setMounted(true);
   }, []);
   if (mounted) {

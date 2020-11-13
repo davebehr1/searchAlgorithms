@@ -22,7 +22,7 @@ const answers = {
 };
 
 export function LinearQuiz() {
-  const { addUnlocked } = useContext(ProgressContext);
+  const { unlocked, setUnlocked } = useContext(ProgressContext);
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>test your knowledge</h1>
@@ -38,7 +38,6 @@ export function LinearQuiz() {
           try {
             let correct = 0;
             await new Promise((r) => setTimeout(r, 500));
-            console.log(values);
             let vals = [];
             vals = JSON.parse(localStorage.getItem("unlocked"));
             if (vals.includes("hashing") === false) {
@@ -47,7 +46,6 @@ export function LinearQuiz() {
             localStorage.setItem("unlocked", JSON.stringify(vals));
 
             Object.entries(values).forEach(([key, value]) => {
-              console.log(value, answers[`${key}`]);
               if (value === answers[`${key}`]) {
                 correct++;
               }
@@ -59,7 +57,7 @@ export function LinearQuiz() {
               type: "success",
             });
             if (correct.length === values.length) {
-              addUnlocked("hashing");
+              setUnlocked([...unlocked, "hashing"]);
               let badges;
               badges = JSON.parse(localStorage.getItem("badges"));
               badges.linear = true;

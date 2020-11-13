@@ -52,7 +52,23 @@ export function LinearSearch() {
       <h1 className={classes.heading}>Linear Search</h1>
       <SimpleTabs
         background={
-          "Linear search also known as sequential search is a simple searching algorithm for finding an element within a list.  The way this searching algorithm works is that every element in the list is checked sequentially starting from index 0 of an array if a match is found then that particular element is returned otherwise a null or -1 is return to indicate that the element was not found in the array that was being searched. In linear search you do not have to sort the array before the search takes place and thus no preprocessing of data is necessary."
+          <div className={classes.background}>
+            <p>
+              Linear search also known as sequential search is a simple
+              searching algorithm for finding an element within a list. The way
+              this searching algorithm works is that every element in the list
+              is checked sequentially starting from index 0 of an array if a
+              match is found then that particular element is returned otherwise
+              a null or -1 is return to indicate that the element was not found
+              in the array that was being searched. In linear search you do not
+              have to sort the array before the search takes place and thus no
+              preprocessing of data is necessary
+            </p>
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=aqFTmGbKajI"
+              style={{ margin: "30px" }}
+            />
+          </div>
         }
         prosAndCons={
           <>
@@ -148,10 +164,6 @@ export function LinearSearch() {
           </>
         }
         quiz={<LinearQuiz />}
-      />
-      <ReactPlayer
-        url="https://www.youtube.com/watch?v=aqFTmGbKajI"
-        style={{ margin: "30px" }}
       />
     </div>
   );

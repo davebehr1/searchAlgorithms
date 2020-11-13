@@ -68,7 +68,20 @@ export function BinarySearch() {
       <h1 className={classes.heading}>BinarySearch</h1>
       <SimpleTabs
         background={
-          "Binary Search is searching technique which works on Divide and Conquer approach. It used to search any element in a sorted array. As compared to linear, binary search is much faster with Time Complexity of O(logN) whereas linear search algorithm works in O(N) time complexity"
+          <div className={classes.background}>
+            <p>
+              Binary Search is searching technique which works on Divide and
+              Conquer approach. It used to search any element in a sorted array.
+              As compared to linear, binary search is much faster with Time
+              Complexity of O(logN) whereas linear search algorithm works in
+              O(N) time complexity
+            </p>
+
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=T2sFYY-fT5o"
+              style={{ margin: "30px" }}
+            />
+          </div>
         }
         prosAndCons={
           <>
@@ -149,10 +162,6 @@ export function BinarySearch() {
           </>
         }
         quiz={<BinaryQuiz />}
-      />
-      <ReactPlayer
-        url="https://www.youtube.com/watch?v=T2sFYY-fT5o"
-        style={{ margin: "30px" }}
       />
     </div>
   );

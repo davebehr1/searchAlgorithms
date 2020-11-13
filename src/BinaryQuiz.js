@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import classes from "./search.module.css";
 import { Box } from "@material-ui/core";
 import * as yup from "yup";
@@ -22,11 +22,7 @@ const answers = {
 };
 
 export function BinaryQuiz() {
-  const { unlocked, addUnlocked } = useContext(ProgressContext);
-
-  useEffect(() => {
-    console.log(unlocked);
-  }, [unlocked]);
+  const { unlocked, setUnlocked } = useContext(ProgressContext);
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>test your knowledge</h1>
@@ -51,7 +47,6 @@ export function BinaryQuiz() {
             localStorage.setItem("unlocked", JSON.stringify(vals));
 
             Object.entries(values).forEach(([key, value]) => {
-              console.log(value, answers[`${key}`]);
               if (value === answers[`${key}`]) {
                 correct++;
               }
@@ -65,8 +60,7 @@ export function BinaryQuiz() {
             });
 
             if (correct.length === values.length) {
-              addUnlocked("linear-search");
-
+              setUnlocked([...unlocked, "linear-search"]);
               let badges;
               badges = JSON.parse(localStorage.getItem("badges"));
               badges.binary = true;

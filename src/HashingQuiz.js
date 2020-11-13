@@ -38,7 +38,6 @@ export function HashingQuiz() {
             let correct = 0;
             await new Promise((r) => setTimeout(r, 500));
             Object.entries(values).forEach(([key, value]) => {
-              console.log(value, answers[`${key}`]);
               if (value === answers[`${key}`]) {
                 correct++;
               }
