@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 export const ProgressContext = React.createContext({
-  setUnlocked: () => {},
+  addUnlocked: () => {},
   unlocked: [],
 });
 
 export function ProgessController({ children }) {
   const [unlocked, setUnlocked] = useState([]);
 
+  const addUnlocked = useCallback(
+    (locked) => {
+      let vals = unlocked;
+      vals.push(locked);
+      setUnlocked(vals);
+    },
+    [unlocked]
+  );
+
   const value = React.useMemo(
     () => ({
-      setUnlocked,
       unlocked,
+      addUnlocked,
     }),
-    [setUnlocked, unlocked]
+    [addUnlocked, unlocked]
   );
 
   return (

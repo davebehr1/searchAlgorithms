@@ -13,11 +13,11 @@ function App() {
     );
   }, []);
   return (
-    <ProgessController>
-      <Router>
+    <Router>
+      <ProgessController>
         <Routes />
-      </Router>
-    </ProgessController>
+      </ProgessController>
+    </Router>
   );
 }
 export default App;

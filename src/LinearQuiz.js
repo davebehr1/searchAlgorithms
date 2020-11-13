@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./search.module.css";
 import { Box } from "@material-ui/core";
 import * as yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { ProgressContext } from "./Context";
 import { ClipButton } from "./Components/ClipButton";
 import { clipPaths } from "./Home";
 
@@ -13,7 +14,15 @@ const schema = yup.object().shape({
   question4: yup.string().required("please answer this question"),
 });
 
+const answers = {
+  question1: "Sequential search",
+  question2: "Searching for a value and returns it",
+  question3: "Linear search",
+  question4: "False",
+};
+
 export function LinearQuiz() {
+  const { addUnlocked } = useContext(ProgressContext);
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>test your knowledge</h1>
@@ -27,11 +36,9 @@ export function LinearQuiz() {
         validationSchema={schema}
         onSubmit={async (values, { setStatus }) => {
           try {
+            let correct = 0;
             await new Promise((r) => setTimeout(r, 500));
-            setStatus({
-              msg: `3 out of 4 are correct`,
-              type: "success",
-            });
+            console.log(values);
             let vals = [];
             vals = JSON.parse(localStorage.getItem("unlocked"));
             if (vals.includes("hashing") === false) {
@@ -39,10 +46,25 @@ export function LinearQuiz() {
             }
             localStorage.setItem("unlocked", JSON.stringify(vals));
 
-            let badges;
-            badges = JSON.parse(localStorage.getItem("badges"));
-            badges.linear = true;
-            localStorage.setItem("badges", JSON.stringify(badges));
+            Object.entries(values).forEach(([key, value]) => {
+              console.log(value, answers[`${key}`]);
+              if (value === answers[`${key}`]) {
+                correct++;
+              }
+            });
+            setStatus({
+              msg: `${correct} out of ${
+                Object.entries(values).length
+              } are correct`,
+              type: "success",
+            });
+            if (correct.length === values.length) {
+              addUnlocked("hashing");
+              let badges;
+              badges = JSON.parse(localStorage.getItem("badges"));
+              badges.linear = true;
+              localStorage.setItem("badges", JSON.stringify(badges));
+            }
           } catch (error) {
             setStatus({
               msg: error,
@@ -140,7 +162,7 @@ export function LinearQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question3" value=" Linear search" />
+                  <Field type="radio" name="question3" value="Linear search" />
                   Linear search
                 </label>
                 <label>

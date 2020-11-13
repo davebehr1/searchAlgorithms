@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import classes from "./search.module.css";
 import { Box } from "@material-ui/core";
 import * as yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { ProgressContext } from "./Context";
 import { ClipButton } from "./Components/ClipButton";
 import { clipPaths } from "./Home";
 
@@ -13,7 +14,19 @@ const schema = yup.object().shape({
   question4: yup.string().required("please answer this question"),
 });
 
+const answers = {
+  question1: "Logarithmic search",
+  question2: "True",
+  question3: "True",
+  question4: "O(log n)",
+};
+
 export function BinaryQuiz() {
+  const { unlocked, addUnlocked } = useContext(ProgressContext);
+
+  useEffect(() => {
+    console.log(unlocked);
+  }, [unlocked]);
   return (
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>test your knowledge</h1>
@@ -27,11 +40,9 @@ export function BinaryQuiz() {
         validationSchema={schema}
         onSubmit={async (values, { setStatus }) => {
           try {
+            let correct = 0;
             await new Promise((r) => setTimeout(r, 500));
-            setStatus({
-              msg: `3 out of 4 are correct`,
-              type: "success",
-            });
+
             let vals = [];
             vals = JSON.parse(localStorage.getItem("unlocked"));
             if (vals.includes("linear-search") === false) {
@@ -39,10 +50,28 @@ export function BinaryQuiz() {
             }
             localStorage.setItem("unlocked", JSON.stringify(vals));
 
-            let badges;
-            badges = JSON.parse(localStorage.getItem("badges"));
-            badges.binary = true;
-            localStorage.setItem("badges", JSON.stringify(badges));
+            Object.entries(values).forEach(([key, value]) => {
+              console.log(value, answers[`${key}`]);
+              if (value === answers[`${key}`]) {
+                correct++;
+              }
+            });
+
+            setStatus({
+              msg: `${correct} out of ${
+                Object.entries(values).length
+              } are correct`,
+              type: "success",
+            });
+
+            if (correct.length === values.length) {
+              addUnlocked("linear-search");
+
+              let badges;
+              badges = JSON.parse(localStorage.getItem("badges"));
+              badges.binary = true;
+              localStorage.setItem("badges", JSON.stringify(badges));
+            }
           } catch (error) {
             setStatus({
               msg: error,
@@ -55,7 +84,7 @@ export function BinaryQuiz() {
           <Form className={classes.quiz} onSubmit={handleSubmit}>
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Linear search is also known as?
+                Binary search is also known as?
               </label>
               <div
                 role="group"
@@ -91,7 +120,7 @@ export function BinaryQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Linear search does the following?
+                Binary search requires a data structure to be sorted?
               </label>
               <div
                 role="group"
@@ -99,28 +128,12 @@ export function BinaryQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Returns sorted values"
-                  />
-                  Returns sorted values
+                  <Field type="radio" name="question2" value="True" />
+                  True
                 </label>
                 <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Searching for a value and returns it"
-                  />
-                  Searching for a value and returns it
-                </label>
-                <label>
-                  <Field
-                    type="radio"
-                    name="question2"
-                    value="Searching for values and returns all values"
-                  />
-                  Searching for values and returns all values
+                  <Field type="radio" name="question2" value="False" />
+                  False
                 </label>
               </div>
             </div>
@@ -131,7 +144,7 @@ export function BinaryQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Which searching algorithm is the easiest to implement?
+                Binary search is considered an optimal searching algorithm?
               </label>
               <div
                 role="group"
@@ -139,16 +152,12 @@ export function BinaryQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question3" value=" Linear search" />
-                  Linear search
+                  <Field type="radio" name="question3" value="True" />
+                  True
                 </label>
                 <label>
-                  <Field type="radio" name="question3" value="Binary Search" />
-                  Binary Search
-                </label>
-                <label>
-                  <Field type="radio" name="question3" value="Hashing" />
-                  Hashing
+                  <Field type="radio" name="question3" value="False" />
+                  False
                 </label>
               </div>
             </div>
@@ -159,8 +168,7 @@ export function BinaryQuiz() {
             />
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Does linear search require a data structure to be sorted for it
-                to work?
+                What is the average case performance of binary search?
               </label>
               <div
                 role="group"
@@ -168,12 +176,16 @@ export function BinaryQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question4" value="True" />
-                  True
+                  <Field type="radio" name="question4" value="O(n)" />
+                  O(n)
                 </label>
                 <label>
-                  <Field type="radio" name="question4" value="False" />
-                  False
+                  <Field type="radio" name="question4" value=" O(n/2)" />
+                  O(n/2)
+                </label>
+                <label>
+                  <Field type="radio" name="question4" value="O(log n)" />
+                  O(log n)
                 </label>
               </div>
             </div>

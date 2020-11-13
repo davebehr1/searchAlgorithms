@@ -6,14 +6,11 @@ import clsx from "clsx";
 import { ProgressContext } from "./Context";
 export function NavBar() {
   const { pathname } = useLocation();
+  const { unlocked } = useContext(ProgressContext);
 
-  const { unlocked, setUnlocked } = useContext(ProgressContext);
-
-  // setUnlocked(["hashing"]);
-
-  console.log("unlocked:", unlocked);
-
-  useEffect(() => {}, [JSON.parse(localStorage.getItem("badges"))]);
+  useEffect(() => {
+    console.log(unlocked);
+  }, [unlocked]);
 
   return (
     <div className={classes.navbarWrapper}>

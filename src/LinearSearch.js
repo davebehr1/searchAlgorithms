@@ -7,15 +7,6 @@ import { SimpleTabs } from "./Components/Tabs";
 import { LinearQuiz } from "./LinearQuiz";
 
 export function LinearSearch() {
-  // useEffect(() => {
-  //   let values = [];
-  //   values = JSON.parse(localStorage.getItem("done"));
-  //   if (values.includes("linear-search") === false) {
-  //     values.push("linear-search");
-  //   }
-
-  //   localStorage.setItem("done", JSON.stringify(values));
-  // }, []);
   const [arr, setArr] = useState([
     { number: 1, color: "transparent" },
     { number: 2, color: "transparent" },

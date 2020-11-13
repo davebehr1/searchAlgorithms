@@ -13,6 +13,14 @@ const schema = yup.object().shape({
   question4: yup.string().required("please answer this question"),
 });
 
+const answers = {
+  question1: "Hash table",
+  question2:
+    "It is used to map a given value with a particular key for faster access of elements",
+  question3: "Hash function",
+  question4: "Hashing",
+};
+
 export function HashingQuiz() {
   return (
     <div className={classes.wrapper}>
@@ -27,16 +35,27 @@ export function HashingQuiz() {
         validationSchema={schema}
         onSubmit={async (values, { setStatus }) => {
           try {
+            let correct = 0;
             await new Promise((r) => setTimeout(r, 500));
+            Object.entries(values).forEach(([key, value]) => {
+              console.log(value, answers[`${key}`]);
+              if (value === answers[`${key}`]) {
+                correct++;
+              }
+            });
             setStatus({
-              msg: `3 out of 4 are correct`,
+              msg: `${correct} out of ${
+                Object.entries(values).length
+              } are correct`,
               type: "success",
             });
 
-            let badges;
-            badges = JSON.parse(localStorage.getItem("badges"));
-            badges.hashing = true;
-            localStorage.setItem("badges", JSON.stringify(badges));
+            if (correct.length === values.length) {
+              let badges;
+              badges = JSON.parse(localStorage.getItem("badges"));
+              badges.hashing = true;
+              localStorage.setItem("badges", JSON.stringify(badges));
+            }
           } catch (error) {
             setStatus({
               msg: error,
@@ -78,7 +97,7 @@ export function HashingQuiz() {
 
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Linear search does the following?
+                What does the hash function do?
               </label>
               <div
                 role="group"
@@ -89,25 +108,26 @@ export function HashingQuiz() {
                   <Field
                     type="radio"
                     name="question2"
-                    value="Returns sorted values"
+                    value="It is used to map a given value with a particular key for faster access of elements"
                   />
-                  Returns sorted values
+                  It is used to map a given value with a particular key for
+                  faster access of elements
                 </label>
                 <label>
                   <Field
                     type="radio"
                     name="question2"
-                    value="Searching for a value and returns it"
+                    value="It computes the square of a value given"
                   />
-                  Searching for a value and returns it
+                  It computes the square of a value given
                 </label>
                 <label>
                   <Field
                     type="radio"
                     name="question2"
-                    value="Searching for values and returns all values"
+                    value="It is used to map a value of 0 for faster access of elements"
                   />
-                  Searching for values and returns all values
+                  It is used to map a value of 0 for faster access of elements
                 </label>
               </div>
             </div>
@@ -119,7 +139,8 @@ export function HashingQuiz() {
 
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Which searching algorithm is the easiest to implement?
+                The efficiency of mapping depends on the efficiency of what in
+                hashing?
               </label>
               <div
                 role="group"
@@ -127,16 +148,16 @@ export function HashingQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question3" value=" Linear search" />
-                  Linear search
+                  <Field type="radio" name="question3" value="Data" />
+                  Data
                 </label>
                 <label>
-                  <Field type="radio" name="question3" value="Binary Search" />
-                  Binary Search
+                  <Field type="radio" name="question3" value="Hash function" />
+                  Hash function
                 </label>
                 <label>
-                  <Field type="radio" name="question3" value="Hashing" />
-                  Hashing
+                  <Field type="radio" name="question3" value="Hash table" />
+                  Hash table
                 </label>
               </div>
             </div>
@@ -148,8 +169,7 @@ export function HashingQuiz() {
 
             <div className={classes.formInput}>
               <label className={classes.questionLabel}>
-                Does linear search require a data structure to be sorted for it
-                to work?
+                Which choice is used in many encryption algorithms?
               </label>
               <div
                 role="group"
@@ -157,12 +177,16 @@ export function HashingQuiz() {
                 className={classes.radioGroup}
               >
                 <label>
-                  <Field type="radio" name="question4" value="True" />
-                  True
+                  <Field type="radio" name="question4" value="Binary search" />
+                  Binary search
                 </label>
                 <label>
-                  <Field type="radio" name="question4" value="False" />
-                  False
+                  <Field type="radio" name="question4" value="Linear search" />
+                  Linear search
+                </label>
+                <label>
+                  <Field type="radio" name="question4" value="Hashing" />
+                  Hashing
                 </label>
               </div>
             </div>
