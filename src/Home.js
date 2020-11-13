@@ -15,7 +15,7 @@ export function Home() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("unlocked") === null) {
-      localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
+      localStorage.setItem("unlocked", JSON.stringify(["linear-search"]));
     }
 
     if (localStorage.getItem("badges") === null) {
@@ -78,14 +78,6 @@ export function Home() {
           </h4>
 
           <ClipButton
-            clipPath={clipPaths[0]}
-            link={"/binary-search"}
-            label={"binary search"}
-            disable={
-              !localStorage.getItem("unlocked").includes("binary-search")
-            }
-          />
-          <ClipButton
             clipPath={clipPaths[1]}
             link={"/linear-search"}
             label={"Linear Search"}
@@ -93,6 +85,16 @@ export function Home() {
               !localStorage.getItem("unlocked").includes("linear-search")
             }
           />
+
+          <ClipButton
+            clipPath={clipPaths[0]}
+            link={"/binary-search"}
+            label={"binary search"}
+            disable={
+              !localStorage.getItem("unlocked").includes("binary-search")
+            }
+          />
+
           <ClipButton
             clipPath={clipPaths[2]}
             link={"/hashing"}

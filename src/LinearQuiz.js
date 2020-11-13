@@ -37,14 +37,6 @@ export function LinearQuiz() {
         onSubmit={async (values, { setStatus }) => {
           try {
             let correct = 0;
-            await new Promise((r) => setTimeout(r, 500));
-            let vals = [];
-            vals = JSON.parse(localStorage.getItem("unlocked"));
-            if (vals.includes("hashing") === false) {
-              vals.push("hashing");
-            }
-            localStorage.setItem("unlocked", JSON.stringify(vals));
-
             Object.entries(values).forEach(([key, value]) => {
               if (value === answers[`${key}`]) {
                 correct++;
@@ -57,7 +49,14 @@ export function LinearQuiz() {
               type: "success",
             });
             if (correct.length === values.length) {
-              setUnlocked([...unlocked, "hashing"]);
+              let vals = [];
+              vals = JSON.parse(localStorage.getItem("unlocked"));
+              if (vals.includes("binary-search") === false) {
+                vals.push("binary-search");
+              }
+              localStorage.setItem("unlocked", JSON.stringify(vals));
+
+              setUnlocked([...unlocked, "binary-search"]);
               let badges;
               badges = JSON.parse(localStorage.getItem("badges"));
               badges.linear = true;

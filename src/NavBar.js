@@ -23,15 +23,7 @@ export function NavBar() {
         >
           <h1 className={classes.title}>Searching Algorithms</h1>
         </Link>
-        <Link
-          to="/binary-search"
-          className={clsx(
-            classes.link,
-            pathname === "/binary-search" && classes.active
-          )}
-        >
-          Binary Search
-        </Link>
+
         <Link
           to="/linear-search"
           className={clsx(
@@ -42,6 +34,17 @@ export function NavBar() {
           )}
         >
           Linear Search
+        </Link>
+        <Link
+          to="/binary-search"
+          className={clsx(
+            classes.link,
+            pathname === "/binary-search" && classes.active,
+            !localStorage.getItem("unlocked").includes("binary-search") &&
+              classes.disabled
+          )}
+        >
+          Binary Search
         </Link>
         <Link
           to="/hashing"

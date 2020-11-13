@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("unlocked") === null) {
       console.log("setting");
-      localStorage.setItem("unlocked", JSON.stringify(["binary-search"]));
+      localStorage.setItem("unlocked", JSON.stringify(["linear-search"]));
       localStorage.setItem(
         "badges",
         JSON.stringify({ binary: false, linear: false, hashing: false })
