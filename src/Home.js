@@ -4,6 +4,7 @@ import classes from "./Home.module.css";
 import { ClipButton } from "./Components/ClipButtonLink";
 import Particles from "react-particles-js";
 import BadgeSvg from "./Components/badgeSvg";
+import "./GlitchEffect.sass";
 
 export const clipPaths = [
   "polygon(0% 0%, 7% 100%, 87% 88%, 94% 4%)",
@@ -55,7 +56,9 @@ export function Home() {
         />
 
         <div className={classes.Wrapper}>
-          <h1 className={classes.Heading}>Welcome detective</h1>
+          <div className={"wrapper"}>
+            <h1 className={"glitch"}>Welcome detective</h1>
+          </div>
           <Box>
             <BadgeSvg
               fillbadge={JSON.parse(localStorage.getItem("badges")).binary}
