@@ -57,10 +57,6 @@ export function LinearQuiz() {
               localStorage.setItem("unlocked", JSON.stringify(vals));
 
               setUnlocked([...unlocked, "binary-search"]);
-              let badges;
-              badges = JSON.parse(localStorage.getItem("badges"));
-              badges.linear = true;
-              localStorage.setItem("badges", JSON.stringify(badges));
             }
           } catch (error) {
             setStatus({

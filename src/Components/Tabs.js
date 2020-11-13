@@ -76,7 +76,17 @@ export function SimpleTabs({
       <TabPanel value={value} index={1} className={classes.panel}>
         {prosAndCons}
       </TabPanel>
-      <TabPanel value={value} index={2} className={classes.panel}>
+      <TabPanel
+        value={value}
+        index={2}
+        className={classes.panel}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
         {example}
       </TabPanel>
       <TabPanel value={value} index={3} className={classes.panel}>
