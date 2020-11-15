@@ -49,7 +49,12 @@ export function Hashing() {
     }
     localStorage.setItem("unlockedQuizes", JSON.stringify(vals));
 
-    setUnlockedQuizes([...unlockedQuizes, "hashing"]);
+    if (unlockedQuizes) {
+      setUnlockedQuizes([...unlockedQuizes, "hashing"]);
+    } else {
+      setUnlockedQuizes(["hashing"]);
+    }
+
     event.preventDefault();
   }
 

@@ -45,7 +45,7 @@ export function BinarySearch() {
   const getSearchOrder = (array, searchValue) => {
     array = array.sort();
     let x = parseInt(searchValue);
-    console.log(x);
+
     let vals = [];
     let start = 0,
       end = array.length - 1;
@@ -80,12 +80,10 @@ export function BinarySearch() {
       });
       tempArr[mid].color = "#2F486E";
 
-      console.log(tempArr);
       setArr(tempArr);
 
       // If element is present at mid, return True
       if (arr[mid].number === x) {
-        console.log(`found ${x}`);
         return true;
       }
       // Else look in left or right half accordingly
@@ -225,18 +223,15 @@ export function BinarySearch() {
                         setProblemArr(tempArr);
 
                         setTimeout(() => {
-                          console.log("setting back");
                           tempArr[index].color = "transparent";
                           setProblemArr(tempArr);
                         }, 800);
                       } else {
                         let tempArr = [...problemArr];
-                        console.log("correct");
                         tempArr[index].color = "red";
                         setProblemArr(tempArr);
 
                         setTimeout(() => {
-                          console.log("setting back");
                           tempArr[index].color = "transparent";
                           setProblemArr(tempArr);
                         }, 800);
@@ -253,7 +248,11 @@ export function BinarySearch() {
                         "unlockedQuizes",
                         JSON.stringify(vals)
                       );
-                      setUnlockedQuizes([...unlockedQuizes, "binary-search"]);
+                      if (unlockedQuizes) {
+                        setUnlockedQuizes([...unlockedQuizes, "binary-search"]);
+                      } else {
+                        setUnlockedQuizes(["binary-search"]);
+                      }
                     }}
                     style={{ background: item.color }}
                   >

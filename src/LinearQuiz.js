@@ -64,7 +64,7 @@ export function LinearQuiz() {
               } are correct`,
               type: "success",
             });
-            console.log(correct);
+
             if (correct >= 6) {
               let vals = [];
               vals = JSON.parse(localStorage.getItem("unlockedPages"));

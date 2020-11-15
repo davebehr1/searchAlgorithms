@@ -211,18 +211,16 @@ export function LinearSearch() {
                         setProblemArr(tempArr);
 
                         setTimeout(() => {
-                          console.log("setting back");
                           tempArr[index].color = "transparent";
                           setProblemArr(tempArr);
                         }, 800);
                       } else {
                         let tempArr = [...problemArr];
-                        console.log("correct");
+
                         tempArr[index].color = "red";
                         setProblemArr(tempArr);
 
                         setTimeout(() => {
-                          console.log("setting back");
                           tempArr[index].color = "transparent";
                           setProblemArr(tempArr);
                         }, 800);
@@ -240,7 +238,11 @@ export function LinearSearch() {
                         JSON.stringify(vals)
                       );
 
-                      setUnlockedQuizes([...unlockedQuizes, "linear-search"]);
+                      if (unlockedQuizes) {
+                        setUnlockedQuizes([...unlockedQuizes, "linear-search"]);
+                      } else {
+                        setUnlockedQuizes(["linear-search"]);
+                      }
                     }}
                     style={{ background: item.color }}
                   >

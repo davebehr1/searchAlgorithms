@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import useStyles from "./TabStyles";
+import clsx from "clsx";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -46,9 +47,21 @@ export function SimpleTabs({
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  const [shake, setShake] = React.useState(false);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    if (quizDisabled === false) {
+      setShake(true);
+
+      setTimeout(() => {
+        setShake(false);
+      }, 1000);
+    }
+  }, [quizDisabled]);
 
   return (
     <div className={classes.root}>
@@ -72,7 +85,7 @@ export function SimpleTabs({
           <Tab className={classes.tab} label="problem" {...a11yProps(4)} />
 
           <Tab
-            className={classes.tab}
+            className={clsx(classes.tab, shake && classes.shake)}
             label="Quiz"
             {...a11yProps(5)}
             disabled={quizDisabled}
