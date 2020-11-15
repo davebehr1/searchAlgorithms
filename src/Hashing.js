@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classes from "./search.module.css";
 import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
 import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
 import { HashingQuiz } from "./HashingQuiz";
+import { ProgressContext } from "./Context";
 
 export function Hashing() {
-  useEffect(() => {
-    let values = [];
-    values = JSON.parse(localStorage.getItem("unlocked"));
-    if (values.includes("hashing") === false) {
-      values.push("hashing");
-    }
+  const { unlockedQuizes, setUnlockedQuizes } = useContext(ProgressContext);
 
-    localStorage.setItem("unlocked", JSON.stringify(values));
-  }, []);
   const [arr] = useState([
     { number: 2, color: "transparent" },
     { number: 4, color: "transparent" },
@@ -27,6 +21,16 @@ export function Hashing() {
 
   const [answer, setAnswer] = useState();
 
+  useEffect(() => {
+    let values = [];
+    values = JSON.parse(localStorage.getItem("unlockedPages"));
+    if (values.includes("hashing") === false) {
+      values.push("hashing");
+    }
+
+    localStorage.setItem("unlockedPages", JSON.stringify(values));
+  }, []);
+
   function handleSubmit(event) {
     if (parseInt(answer) === 6) {
       setMessage("you have earned the hashing search badge");
@@ -37,6 +41,15 @@ export function Hashing() {
     } else {
       setMessage("try again");
     }
+
+    let vals = [];
+    vals = JSON.parse(localStorage.getItem("unlockedQuizes"));
+    if (vals.includes("hashing") === false) {
+      vals.push("hashing");
+    }
+    localStorage.setItem("unlockedQuizes", JSON.stringify(vals));
+
+    setUnlockedQuizes([...unlockedQuizes, "hashing"]);
     event.preventDefault();
   }
 
@@ -47,6 +60,9 @@ export function Hashing() {
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>Hashing</h1>
       <SimpleTabs
+        quizDisabled={
+          unlockedQuizes === null ? true : !unlockedQuizes.includes("hashing")
+        }
         background={
           <div className={classes.background}>
             <p>

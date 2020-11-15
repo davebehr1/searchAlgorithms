@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./search.module.css";
 import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
@@ -6,6 +6,7 @@ import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
 import { BinaryQuiz } from "./BinaryQuiz";
 import { Typography } from "@material-ui/core";
+import { ProgressContext } from "./Context";
 
 export function BinarySearch() {
   const [arr, setArr] = useState([
@@ -19,6 +20,8 @@ export function BinarySearch() {
     { number: 8, color: "transparent" },
     { number: 9, color: "transparent" },
   ]);
+
+  const { unlockedQuizes, setUnlockedQuizes } = useContext(ProgressContext);
 
   const [problemArr, setProblemArr] = useState([
     { number: 1, color: "transparent" },
@@ -59,8 +62,6 @@ export function BinarySearch() {
     }
     return vals;
   };
-
-  console.log(getSearchOrder(problemArr, 300));
 
   const search = async () => {
     let x = parseInt(searchValue);
@@ -108,6 +109,11 @@ export function BinarySearch() {
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>BinarySearch</h1>
       <SimpleTabs
+        quizDisabled={
+          unlockedQuizes === null
+            ? true
+            : !unlockedQuizes.includes("binary-search")
+        }
         background={
           <div className={classes.background}>
             <Typography variant="body1">
@@ -181,7 +187,6 @@ export function BinarySearch() {
         }
         problem={
           <>
-            {" "}
             <h2
               style={{
                 display: "flex",
@@ -189,7 +194,6 @@ export function BinarySearch() {
                 color: "#e6d470",
               }}
             >
-              {" "}
               Find the murderer known as 72 by clicking on each suspect until
               you have found the murderer using binary search.
             </h2>
@@ -239,6 +243,17 @@ export function BinarySearch() {
                         setMessage("try again");
                         setProblemIndex(0);
                       }
+
+                      let vals = [];
+                      vals = JSON.parse(localStorage.getItem("unlockedQuizes"));
+                      if (vals.includes("binary-search") === false) {
+                        vals.push("binary-search");
+                      }
+                      localStorage.setItem(
+                        "unlockedQuizes",
+                        JSON.stringify(vals)
+                      );
+                      setUnlockedQuizes([...unlockedQuizes, "binary-search"]);
                     }}
                     style={{ background: item.color }}
                   >

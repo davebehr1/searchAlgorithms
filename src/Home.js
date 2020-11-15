@@ -14,8 +14,8 @@ export const clipPaths = [
 export function Home() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem("unlocked") === null) {
-      localStorage.setItem("unlocked", JSON.stringify(["linear-search"]));
+    if (localStorage.getItem("unlockedPages") === null) {
+      localStorage.setItem("unlockedPages", JSON.stringify(["linear-search"]));
     }
 
     if (localStorage.getItem("badges") === null) {
@@ -82,7 +82,7 @@ export function Home() {
             link={"/linear-search"}
             label={"Linear Search"}
             disable={
-              !localStorage.getItem("unlocked").includes("linear-search")
+              !localStorage.getItem("unlockedPages").includes("linear-search")
             }
           />
 
@@ -91,7 +91,7 @@ export function Home() {
             link={"/binary-search"}
             label={"binary search"}
             disable={
-              !localStorage.getItem("unlocked").includes("binary-search")
+              !localStorage.getItem("unlockedPages").includes("binary-search")
             }
           />
 
@@ -99,7 +99,7 @@ export function Home() {
             clipPath={clipPaths[2]}
             link={"/hashing"}
             label={"Hashing"}
-            disable={!localStorage.getItem("unlocked").includes("hashing")}
+            disable={!localStorage.getItem("unlockedPages").includes("hashing")}
           />
         </div>
       </>

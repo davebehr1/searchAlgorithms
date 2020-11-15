@@ -64,7 +64,7 @@ export function HashingQuiz() {
               type: "success",
             });
 
-            if (correct.length === values.length) {
+            if (correct >= 6) {
               let badges;
               badges = JSON.parse(localStorage.getItem("badges"));
               badges.hashing = true;

@@ -66,13 +66,13 @@ export function BinaryQuiz() {
               type: "success",
             });
 
-            if (correct.length === values.length) {
+            if (correct >= 6) {
               let vals = [];
-              vals = JSON.parse(localStorage.getItem("unlocked"));
+              vals = JSON.parse(localStorage.getItem("unlockedPages"));
               if (vals.includes("hashing") === false) {
                 vals.push("hashing");
               }
-              localStorage.setItem("unlocked", JSON.stringify(vals));
+              localStorage.setItem("unlockedPages", JSON.stringify(vals));
 
               setUnlocked([...unlocked, "hashing"]);
             }

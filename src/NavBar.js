@@ -29,7 +29,7 @@ export function NavBar() {
           className={clsx(
             classes.link,
             pathname === "/linear-search" && classes.active,
-            !localStorage.getItem("unlocked").includes("linear-search") &&
+            !localStorage.getItem("unlockedPages").includes("linear-search") &&
               classes.disabled
           )}
         >
@@ -40,7 +40,7 @@ export function NavBar() {
           className={clsx(
             classes.link,
             pathname === "/binary-search" && classes.active,
-            !localStorage.getItem("unlocked").includes("binary-search") &&
+            !localStorage.getItem("unlockedPages").includes("binary-search") &&
               classes.disabled
           )}
         >
@@ -51,7 +51,7 @@ export function NavBar() {
           className={clsx(
             classes.link,
             pathname === "/hashing" && classes.active,
-            !localStorage.getItem("unlocked").includes("hashing") &&
+            !localStorage.getItem("unlockedPages").includes("hashing") &&
               classes.disabled
           )}
         >

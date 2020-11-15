@@ -41,6 +41,7 @@ export function SimpleTabs({
   example,
   problem,
   quiz,
+  quizDisabled,
 }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -66,10 +67,16 @@ export function SimpleTabs({
             label="pros and cons"
             {...a11yProps(1)}
           />
-          <Tab className={classes.tab} label="example" {...a11yProps(2)} />
-          <Tab className={classes.tab} label="problem" {...a11yProps(3)} />
-          <Tab className={classes.tab} label="Performance" {...a11yProps(4)} />
-          <Tab className={classes.tab} label="Quiz" {...a11yProps(5)} />
+          <Tab className={classes.tab} label="Performance" {...a11yProps(2)} />
+          <Tab className={classes.tab} label="example" {...a11yProps(3)} />
+          <Tab className={classes.tab} label="problem" {...a11yProps(4)} />
+
+          <Tab
+            className={classes.tab}
+            label="Quiz"
+            {...a11yProps(5)}
+            disabled={quizDisabled}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className={classes.panel}>
@@ -78,9 +85,14 @@ export function SimpleTabs({
       <TabPanel value={value} index={1} className={classes.panel}>
         {prosAndCons}
       </TabPanel>
+
+      <TabPanel value={value} index={2} className={classes.panel}>
+        {performance}
+      </TabPanel>
+
       <TabPanel
         value={value}
-        index={2}
+        index={3}
         className={classes.panel}
         style={{
           display: "flex",
@@ -93,7 +105,7 @@ export function SimpleTabs({
       </TabPanel>
       <TabPanel
         value={value}
-        index={3}
+        index={4}
         className={classes.panel}
         style={{
           display: "flex",
@@ -103,9 +115,6 @@ export function SimpleTabs({
         }}
       >
         {problem}
-      </TabPanel>
-      <TabPanel value={value} index={4} className={classes.panel}>
-        {performance}
       </TabPanel>
       <TabPanel value={value} index={5} className={classes.panel}>
         {quiz}

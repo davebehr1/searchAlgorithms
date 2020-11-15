@@ -52,6 +52,7 @@ export function LinearQuiz() {
         onSubmit={async (values, { setStatus }) => {
           try {
             let correct = 0;
+
             Object.entries(values).forEach(([key, value]) => {
               if (value === answers[`${key}`]) {
                 correct++;
@@ -63,13 +64,14 @@ export function LinearQuiz() {
               } are correct`,
               type: "success",
             });
-            if (correct.length === values.length) {
+            console.log(correct);
+            if (correct >= 6) {
               let vals = [];
-              vals = JSON.parse(localStorage.getItem("unlocked"));
+              vals = JSON.parse(localStorage.getItem("unlockedPages"));
               if (vals.includes("binary-search") === false) {
                 vals.push("binary-search");
               }
-              localStorage.setItem("unlocked", JSON.stringify(vals));
+              localStorage.setItem("unlockedPages", JSON.stringify(vals));
 
               setUnlocked([...unlocked, "binary-search"]);
             }

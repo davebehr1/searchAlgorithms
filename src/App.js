@@ -6,13 +6,16 @@ import { ProgessController } from "./Context";
 
 function App() {
   useEffect(() => {
-    if (localStorage.getItem("unlocked") === null) {
-      console.log("setting");
-      localStorage.setItem("unlocked", JSON.stringify(["linear-search"]));
+    if (localStorage.getItem("unlockedPages") === null) {
+      localStorage.setItem("unlockedPages", JSON.stringify(["linear-search"]));
       localStorage.setItem(
         "badges",
         JSON.stringify({ binary: false, linear: false, hashing: false })
       );
+    }
+
+    if (localStorage.getItem("unlockedQuizes") === null) {
+      localStorage.setItem("unlockedQuizes", JSON.stringify([]));
     }
   }, []);
   return (

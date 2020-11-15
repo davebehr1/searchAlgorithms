@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./search.module.css";
 import ReactPlayer from "react-player";
 import { clipPaths } from "./Home";
 import { ClipButton } from "./Components/ClipButton";
 import { SimpleTabs } from "./Components/Tabs";
 import { LinearQuiz } from "./LinearQuiz";
+import { ProgressContext } from "./Context";
 
 export function LinearSearch() {
   const [arr, setArr] = useState([
@@ -18,6 +19,8 @@ export function LinearSearch() {
     { number: 8, color: "transparent" },
     { number: 9, color: "transparent" },
   ]);
+
+  const { unlockedQuizes, setUnlockedQuizes } = useContext(ProgressContext);
 
   const [problemArr, setProblemArr] = useState([
     { number: 101, color: "transparent" },
@@ -68,6 +71,7 @@ export function LinearSearch() {
 
   function handleSubmit(event) {
     search();
+
     event.preventDefault();
   }
 
@@ -78,6 +82,11 @@ export function LinearSearch() {
     <div className={classes.wrapper}>
       <h1 className={classes.heading}>Linear Search</h1>
       <SimpleTabs
+        quizDisabled={
+          unlockedQuizes === null
+            ? true
+            : !unlockedQuizes.includes("linear-search")
+        }
         background={
           <div className={classes.background}>
             <p>
@@ -220,6 +229,18 @@ export function LinearSearch() {
                         setMessage("try again");
                         setProblemIndex(0);
                       }
+
+                      let vals = [];
+                      vals = JSON.parse(localStorage.getItem("unlockedQuizes"));
+                      if (vals.includes("linear-search") === false) {
+                        vals.push("linear-search");
+                      }
+                      localStorage.setItem(
+                        "unlockedQuizes",
+                        JSON.stringify(vals)
+                      );
+
+                      setUnlockedQuizes([...unlockedQuizes, "linear-search"]);
                     }}
                     style={{ background: item.color }}
                   >
