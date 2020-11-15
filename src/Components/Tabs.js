@@ -39,6 +39,7 @@ export function SimpleTabs({
   prosAndCons,
   performance,
   example,
+  problem,
   quiz,
 }) {
   const classes = useStyles();
@@ -66,8 +67,9 @@ export function SimpleTabs({
             {...a11yProps(1)}
           />
           <Tab className={classes.tab} label="example" {...a11yProps(2)} />
-          <Tab className={classes.tab} label="Performance" {...a11yProps(3)} />
-          <Tab className={classes.tab} label="Quiz" {...a11yProps(4)} />
+          <Tab className={classes.tab} label="problem" {...a11yProps(3)} />
+          <Tab className={classes.tab} label="Performance" {...a11yProps(4)} />
+          <Tab className={classes.tab} label="Quiz" {...a11yProps(5)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} className={classes.panel}>
@@ -89,10 +91,23 @@ export function SimpleTabs({
       >
         {example}
       </TabPanel>
-      <TabPanel value={value} index={3} className={classes.panel}>
-        {performance}
+      <TabPanel
+        value={value}
+        index={3}
+        className={classes.panel}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        {problem}
       </TabPanel>
       <TabPanel value={value} index={4} className={classes.panel}>
+        {performance}
+      </TabPanel>
+      <TabPanel value={value} index={5} className={classes.panel}>
         {quiz}
       </TabPanel>
     </div>

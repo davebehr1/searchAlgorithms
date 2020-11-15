@@ -20,8 +20,48 @@ export function BinarySearch() {
     { number: 9, color: "transparent" },
   ]);
 
+  const [problemArr, setProblemArr] = useState([
+    { number: 1, color: "transparent" },
+    { number: 4, color: "transparent" },
+    { number: 62, color: "transparent" },
+    { number: 72, color: "transparent" },
+    { number: 81, color: "transparent" },
+    { number: 101, color: "transparent" },
+    { number: 200, color: "transparent" },
+    { number: 300, color: "transparent" },
+    { number: 534, color: "transparent" },
+  ]);
+
+  const [problemIndex, setProblemIndex] = useState(0);
+
+  const [message, setMessage] = useState("");
+
   const [searchValue, setSearchValue] = useState(8);
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+  const getSearchOrder = (array, searchValue) => {
+    array = array.sort();
+    let x = parseInt(searchValue);
+    console.log(x);
+    let vals = [];
+    let start = 0,
+      end = array.length - 1;
+
+    while (start <= end) {
+      let mid = Math.floor((start + end) / 2);
+
+      vals.push(array[mid].number);
+      if (array[mid].number === x) {
+        return vals;
+      } else if (array[mid].number < x) {
+        start = mid + 1;
+      } else end = mid - 1;
+    }
+    return vals;
+  };
+
+  console.log(getSearchOrder(problemArr, 300));
+
   const search = async () => {
     let x = parseInt(searchValue);
 
@@ -138,6 +178,78 @@ export function BinarySearch() {
               />
             </form>
           </div>
+        }
+        problem={
+          <>
+            {" "}
+            <h2
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                color: "gold",
+              }}
+            >
+              {" "}
+              select the numbers in order to find 72
+            </h2>
+            <div className={classes.array}>
+              {problemArr.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={classes.arrayItem}
+                    onClick={() => {
+                      if (
+                        problemIndex + 1 ===
+                        getSearchOrder(problemArr, 300).length
+                      ) {
+                        setMessage("you have earned the binary search badge");
+                        setProblemIndex(0);
+                        let badges;
+                        badges = JSON.parse(localStorage.getItem("badges"));
+                        badges.binary = true;
+                        localStorage.setItem("badges", JSON.stringify(badges));
+                      }
+                      if (
+                        getSearchOrder(problemArr, 300)[problemIndex] ===
+                        item.number
+                      ) {
+                        setProblemIndex((prev) => prev + 1);
+                        let tempArr = [...problemArr];
+                        tempArr[index].color = "blue";
+                        setProblemArr(tempArr);
+
+                        setTimeout(() => {
+                          console.log("setting back");
+                          tempArr[index].color = "transparent";
+                          setProblemArr(tempArr);
+                        }, 800);
+                      } else {
+                        let tempArr = [...problemArr];
+                        console.log("correct");
+                        tempArr[index].color = "red";
+                        setProblemArr(tempArr);
+
+                        setTimeout(() => {
+                          console.log("setting back");
+                          tempArr[index].color = "transparent";
+                          setProblemArr(tempArr);
+                        }, 800);
+                        setMessage("try again");
+                        setProblemIndex(0);
+                      }
+                    }}
+                    style={{ background: item.color }}
+                  >
+                    {item.number}
+                  </div>
+                );
+              })}
+            </div>
+            <h3 style={{ display: "flex", justifyContent: "center" }}>
+              {message}
+            </h3>
+          </>
         }
         performance={
           <>

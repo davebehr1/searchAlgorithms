@@ -5,6 +5,7 @@ const useStyles = makeStyles(() => ({
     width: "80%",
     backgroundColor: "transparent",
     border: "2px solid orange",
+    marginBottom: "50px",
   },
   tab: {
     border: "2px solid orange",

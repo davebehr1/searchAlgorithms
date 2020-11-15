@@ -12,6 +12,11 @@ const schema = yup.object().shape({
   question2: yup.string().required("please answer this question"),
   question3: yup.string().required("please answer this question"),
   question4: yup.string().required("please answer this question"),
+  question5: yup.string().required("please answer this question"),
+  question6: yup.string().required("please answer this question"),
+  question7: yup.string().required("please answer this question"),
+  question8: yup.string().required("please answer this question"),
+  question9: yup.string().required("please answer this question"),
 });
 
 const answers = {
@@ -19,6 +24,11 @@ const answers = {
   question2: "True",
   question3: "True",
   question4: "O(log n)",
+  question5: "True",
+  question6: "True",
+  question7: "Both",
+  question8: "Binary Search",
+  question9: "True",
 };
 
 export function BinaryQuiz() {
@@ -32,6 +42,11 @@ export function BinaryQuiz() {
           question2: "",
           question3: "",
           question4: "",
+          question5: "",
+          question6: "",
+          question7: "",
+          question8: "",
+          question9: "",
         }}
         validationSchema={schema}
         onSubmit={async (values, { setStatus }) => {
@@ -60,10 +75,6 @@ export function BinaryQuiz() {
               localStorage.setItem("unlocked", JSON.stringify(vals));
 
               setUnlocked([...unlocked, "hashing"]);
-              let badges;
-              badges = JSON.parse(localStorage.getItem("badges"));
-              badges.binary = true;
-              localStorage.setItem("badges", JSON.stringify(badges));
             }
           } catch (error) {
             setStatus({
@@ -184,6 +195,139 @@ export function BinaryQuiz() {
             </div>
             <ErrorMessage
               name="question4"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                The worst case performance is the same as the average case
+                performance for binary search
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question5" value="True" />
+                  True
+                </label>
+                <label>
+                  <Field type="radio" name="question5" value="False" />
+                  False
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question5"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Binary search is faster than linear search?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question6" value="True" />
+                  True
+                </label>
+                <label>
+                  <Field type="radio" name="question6" value="False" />
+                  False
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question6"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Which of the following searching algorithm has a best case
+                performance of O(1)?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question7" value="Binary Search" />
+                  Binary Search
+                </label>
+                <label>
+                  <Field type="radio" name="question7" value="Linear Search" />
+                  Linear Search
+                </label>
+                <label>
+                  <Field type="radio" name="question7" value="Both" />
+                  Both
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question7"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Which searching algorithm In terms of iterations and that works
+                only by comparing elements exhibits the best average and
+                worst-case performance of the following searching algorithms?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question8" value="Linear search" />
+                  Linear Search
+                </label>
+                <label>
+                  <Field type="radio" name="question8" value="Binary Search" />
+                  Binary Search
+                </label>
+                <label>
+                  <Field type="radio" name="question8" value="Hashing" />
+                  Hashing
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question8"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Does binary search compare the target value to the middle
+                element of the array when applied?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question9" value="True" />
+                  True
+                </label>
+                <label>
+                  <Field type="radio" name="question9" value="False" />
+                  False
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question9"
               component="div"
               className={classes.fieldError}
             />

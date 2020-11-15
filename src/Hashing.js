@@ -16,61 +16,32 @@ export function Hashing() {
 
     localStorage.setItem("unlocked", JSON.stringify(values));
   }, []);
-  const [arr, setArr] = useState([
-    { number: 1, color: "transparent" },
+  const [arr] = useState([
     { number: 2, color: "transparent" },
-    { number: 3, color: "transparent" },
     { number: 4, color: "transparent" },
     { number: 5, color: "transparent" },
-    { number: 6, color: "transparent" },
-    { number: 7, color: "transparent" },
+    { number: 3, color: "transparent" },
     { number: 8, color: "transparent" },
-    { number: 9, color: "transparent" },
   ]);
+  const [message, setMessage] = useState("");
 
-  const [searchValue, setSearchValue] = useState(8);
-  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-  const search = async () => {
-    let x = parseInt(searchValue);
-
-    let start = 0,
-      end = arr.length - 1;
-
-    // Iterate while start not meets end
-    while (start <= end) {
-      // Find the mid index
-      let mid = Math.floor((start + end) / 2);
-      let tempArr = [...arr];
-      console.log(mid);
-      tempArr.forEach((item, index) => {
-        item.color = "transparent";
-      });
-      tempArr[mid].color = "#2F486E";
-
-      console.log(tempArr);
-      setArr(tempArr);
-
-      // If element is present at mid, return True
-      if (arr[mid].number === x) {
-        console.log(`found ${x}`);
-        return true;
-      }
-      // Else look in left or right half accordingly
-      else if (arr[mid].number < x) start = mid + 1;
-      else end = mid - 1;
-      await delay(800);
-    }
-
-    return false;
-  };
+  const [answer, setAnswer] = useState();
 
   function handleSubmit(event) {
-    search();
+    if (parseInt(answer) === 6) {
+      setMessage("you have earned the hashing search badge");
+      let badges;
+      badges = JSON.parse(localStorage.getItem("badges"));
+      badges.hashing = true;
+      localStorage.setItem("badges", JSON.stringify(badges));
+    } else {
+      setMessage("try again");
+    }
     event.preventDefault();
   }
 
   function handleChange(event) {
-    setSearchValue(event.target.value);
+    setAnswer(event.target.value);
   }
   return (
     <div className={classes.wrapper}>
@@ -129,8 +100,18 @@ export function Hashing() {
             </ul>
           </>
         }
-        example={
+        example={<></>}
+        problem={
           <div>
+            <h2
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                color: "gold",
+              }}
+            >
+              Using the hash function f(x) = x/2 what number leadst to 3?
+            </h2>
             <div className={classes.array}>
               {arr.map((item, index) => {
                 return (
@@ -144,21 +125,24 @@ export function Hashing() {
                 );
               })}
             </div>
+
             <form onSubmit={handleSubmit} className={classes.form}>
               <label>
                 <input
                   type="number"
-                  min="1"
-                  max="9"
-                  value={searchValue}
+                  placeholder={1}
+                  value={answer}
                   onChange={handleChange}
                   className={classes.input}
                 />
               </label>
+              <h3 style={{ display: "flex", justifyContent: "center" }}>
+                {message}
+              </h3>
               <ClipButton
                 className={classes.button}
                 type={"submit"}
-                label={"search"}
+                label={"submit"}
                 clipPath={clipPaths[0]}
                 padding="20px"
                 fontSize="20px"

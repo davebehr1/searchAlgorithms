@@ -11,6 +11,11 @@ const schema = yup.object().shape({
   question2: yup.string().required("please answer this question"),
   question3: yup.string().required("please answer this question"),
   question4: yup.string().required("please answer this question"),
+  question5: yup.string().required("please answer this question"),
+  question6: yup.string().required("please answer this question"),
+  question7: yup.string().required("please answer this question"),
+  question8: yup.string().required("please answer this question"),
+  question9: yup.string().required("please answer this question"),
 });
 
 const answers = {
@@ -19,6 +24,11 @@ const answers = {
     "It is used to map a given value with a particular key for faster access of elements",
   question3: "Hash function",
   question4: "Hashing",
+  question5: "Hashing",
+  question6: "True",
+  question7: "O(1)",
+  question8: "True",
+  question9: "True",
 };
 
 export function HashingQuiz() {
@@ -31,6 +41,11 @@ export function HashingQuiz() {
           question2: "",
           question3: "",
           question4: "",
+          question5: "",
+          question6: "",
+          question7: "",
+          question8: "",
+          question9: "",
         }}
         validationSchema={schema}
         onSubmit={async (values, { setStatus }) => {
@@ -191,6 +206,140 @@ export function HashingQuiz() {
             </div>
             <ErrorMessage
               name="question4"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Which of the following is considered the most difficult to
+                implement?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question5" value="Binary search" />
+                  Binary search
+                </label>
+                <label>
+                  <Field type="radio" name="question5" value="Linear search" />
+                  Linear search
+                </label>
+                <label>
+                  <Field type="radio" name="question5" value="Hashing" />
+                  Hashing
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question5"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Is choosing an appropriate hash function a challenge when it
+                comes to hashing?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question6" value="True" />
+                  True
+                </label>
+                <label>
+                  <Field type="radio" name="question6" value="False" />
+                  False
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question6"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                What is the average case performance of the following
+                operations: insert, lookup and delete?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question7" value="O(n)" />
+                  O(n)
+                </label>
+                <label>
+                  <Field type="radio" name="question7" value="O(1)" />
+                  O(1)
+                </label>
+                <label>
+                  <Field type="radio" name="question7" value="O(log n)" />
+                  O(log n)
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question7"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Some advantages of hashing include fast lookup and fast
+                indexing?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question8" value="True" />
+                  True
+                </label>
+                <label>
+                  <Field type="radio" name="question8" value="False" />
+                  False
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question8"
+              component="div"
+              className={classes.fieldError}
+            />
+            <div className={classes.formInput}>
+              <label className={classes.questionLabel}>
+                Hashing is a computationally and storage space efficient form of
+                data access that avoids the non-linear access time of ordered
+                and unordered lists and structured trees?
+              </label>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={classes.radioGroup}
+              >
+                <label>
+                  <Field type="radio" name="question9" value="False" />
+                  False
+                </label>
+                <label>
+                  <Field type="radio" name="question9" value="True" />
+                  True
+                </label>
+              </div>
+            </div>
+            <ErrorMessage
+              name="question9"
               component="div"
               className={classes.fieldError}
             />

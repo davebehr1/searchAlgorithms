@@ -159,6 +159,10 @@ export function LinearSearch() {
                 fontSize="20px"
               />
             </form>
+          </>
+        }
+        problem={
+          <>
             <h2
               style={{
                 display: "flex",
