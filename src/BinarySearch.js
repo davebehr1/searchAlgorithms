@@ -122,6 +122,31 @@ export function BinarySearch() {
               O(N) time complexity
             </Typography>
 
+            <br />
+            <h3>Read more about linear search here</h3>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+              }}
+            >
+              <a
+                className={classes.link}
+                href="https://www.tutorialspoint.com/data_structures_algorithms/binary_search_algorithm.htm"
+                target="_blank"
+              >
+                tutorialspoint
+              </a>
+              <a
+                className={classes.link}
+                href="https://www.geeksforgeeks.org/binary-search/"
+                target="_blank"
+              >
+                Geeks for Geeks
+              </a>
+            </div>
+
             <ReactPlayer
               url="https://www.youtube.com/watch?v=T2sFYY-fT5o"
               style={{ margin: "30px" }}
@@ -192,7 +217,7 @@ export function BinarySearch() {
                 color: "#e6d470",
               }}
             >
-              Find the murderer known as 72 by clicking on each suspect until
+              Find the murderer known as 300 by clicking on each suspect until
               you have found the murderer using binary search.
             </h2>
             <div className={classes.array}>

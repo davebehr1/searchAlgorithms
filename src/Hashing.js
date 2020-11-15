@@ -96,6 +96,30 @@ export function Hashing() {
               variable-length keys. It is also used in many encryption
               algorithms
             </p>
+            <br />
+            <h3>Read more about linear search here</h3>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+              }}
+            >
+              <a
+                className={classes.link}
+                href="https://medium.com/@lukabaramishvili/data-structure-hash-table-big-o-notation-a2ee869be861"
+                target="_blank"
+              >
+                medium
+              </a>
+              <a
+                className={classes.link}
+                href="https://www.geeksforgeeks.org/hashing-data-structure/"
+                target="_blank"
+              >
+                Geeks for Geeks
+              </a>
+            </div>
             <ReactPlayer
               url="https://www.youtube.com/watch?v=KyUTuwz_b7Q"
               style={{ margin: "30px" }}

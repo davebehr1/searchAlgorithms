@@ -73,6 +73,9 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.link {
+  color: orange;
+}
 .background {
   display: flex;
   flex-direction: column;

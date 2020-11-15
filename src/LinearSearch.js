@@ -99,6 +99,30 @@ export function LinearSearch() {
               in the array that was being searched. In linear search you do not
               have to sort the array before the search takes place and thus no
               preprocessing of data is necessary
+              <br />
+              <h3>Read more about linear search here</h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                }}
+              >
+                <a
+                  className={classes.link}
+                  href="https://www.tutorialspoint.com/data_structures_algorithms/linear_search_algorithm.html"
+                  target="_blank"
+                >
+                  tutorialspoint
+                </a>
+                <a
+                  className={classes.link}
+                  href="https://www.geeksforgeeks.org/linear-search/"
+                  target="_blank"
+                >
+                  Geeks for Geeks
+                </a>
+              </div>
             </p>
             <ReactPlayer
               url="https://www.youtube.com/watch?v=aqFTmGbKajI"
