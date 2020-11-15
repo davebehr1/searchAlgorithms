@@ -167,11 +167,12 @@ export function LinearSearch() {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                color: "gold",
+                color: "#e6d470",
               }}
             >
               {" "}
-              select the numbers in order to find 72
+              Find the murderer known as 72 by clicking on each suspect until
+              you have found the murderer using linear search.
             </h2>
 
             <div className={classes.array}>

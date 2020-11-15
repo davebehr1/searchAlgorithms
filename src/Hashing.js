@@ -107,10 +107,13 @@ export function Hashing() {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                color: "gold",
+                color: "#e6d470",
               }}
             >
-              Using the hash function f(x) = x/2 what number leadst to 3?
+              Find the murderer known as 3 using your knew found knowledge of
+              hashing.
+              <br />
+              Using the hash function f(x) = x/2 what number leads to 3?
             </h2>
             <div className={classes.array}>
               {arr.map((item, index) => {
